@@ -1,0 +1,27 @@
+{
+  "name": "svelte-calendars",
+  "version": "0.0.0",
+  "author": "Jérémie Dubuis",
+  "svelte": "src/index.js",
+  "module": "index.mjs",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "rollup": "^1.27.14",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-svelte": "^5.1.1",
+    "svelte": "^3.16.7"
+  },
+  "keywords": [
+    "svelte"
+  ],
+  "files": [
+    "src",
+    "index.mjs",
+    "index.js"
+  ]
+}
