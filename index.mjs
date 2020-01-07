@@ -366,10 +366,10 @@ const DatePicker = create_ssr_component(($$result, $$props, $$bindings, $$slots)
 	let value;
 	let displayCalendar = false;
 
-	const onDateSelection = date => {
+	const onDateSelection = (date, e) => {
 		displayCalendar = false;
 		value = dateToValue(date);
-		onSelect(date);
+		onSelect(date, e);
 	};
 
 	onMount(() => {

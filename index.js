@@ -372,10 +372,10 @@ ${escape(monthsTitles[month])}
     	let value;
     	let displayCalendar = false;
 
-    	const onDateSelection = date => {
+    	const onDateSelection = (date, e) => {
     		displayCalendar = false;
     		value = dateToValue(date);
-    		onSelect(date);
+    		onSelect(date, e);
     	};
 
     	onMount(() => {

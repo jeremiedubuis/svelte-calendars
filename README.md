@@ -42,8 +42,10 @@ Will display the month name over each visible month in calendar
 #### selectedDay (Date)
 Preselected date (will change when user clicks on date)
 
-#### onSelect
-Callback that will be called on selected date change
+#### onSelect (function)
+Callback that will be called on selected date change with two parameters: 
+- the selected date object
+- the original event
 
 ## DatePicker
 ```svelte

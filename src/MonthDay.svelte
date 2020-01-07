@@ -4,9 +4,9 @@
     export let onSelect;
     export let year;
     export let month;
-    const select = (day) => {
+    const select = (e,day) => {
         selectedDay = new Date(year, month, day);
-        onSelect(selectedDay);
+        onSelect(selectedDay, e);
     };
 
     const isSelected = (selectedDay) =>
@@ -19,6 +19,6 @@
 </script>
 
 <button class:is-selected={isSelected(selectedDay)}
-        on:click={() => select(day)}>
+        on:click={(e) => select(e,day)}>
     {day}
 </button>
