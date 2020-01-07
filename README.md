@@ -1,12 +1,18 @@
 svelte-calender is svelte component that allows the rendering of dynamic calendars
 
-## Installation
+# Installation
 
 ```
 $ npm install svelte-calendars
 ```
 
-## Usage
+# Usage
+
+* [Calendar](#Calendar)
+* [DatePicker](#DatePicker)
+* [Configuration](#Configuration)
+
+## Calendar
 
 ```svelte
 <script>
@@ -16,28 +22,47 @@ import { Calendar } from 'svelte-calendars';
 <Calendar />
 ```
 
-## Props
+### Props
 
-### month (number) && year (number)
+#### month (number) && year (number)
 Active month and year at which the calendar will first display
 
-### visibleMonths (number)
+#### visibleMonths (number)
 Amount of months to display in calendar
 
-### displayTitles (bool)
+#### displayTitles (bool)
 If true will display day titles as defined by config option daysTitles
 
-### displayMonthPicker (bool)
+#### displayMonthPicker (bool)
 If true will display current month with previous and next buttons
 
-### displayMonthTitle (bool)
+#### displayMonthTitle (bool)
 Will display the month name over each visible month in calendar
 
-### selectedDay (Date)
+#### selectedDay (Date)
 Preselected date (will change when user clicks on date)
 
-### onSelect
+#### onSelect
 Callback that will be called on selected date change
+
+## DatePicker
+```svelte
+<script>
+import { DatePicker } from 'svelte-calendars';
+</script>
+
+<DatePicker />
+```
+
+### props
+
+The datepicker uses all the props from the calendar component with an extra optional prop
+
+### dateToValue (function)
+The function used to translate the selected date to the string in the input field, by default:
+```
+date => date.toLocaleDateString(),
+```
 
 ## Configuration
 

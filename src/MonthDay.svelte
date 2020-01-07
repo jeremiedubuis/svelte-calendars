@@ -10,7 +10,7 @@
     };
 
     const isSelected = (selectedDay) =>
-            selectedDay
+            selectedDay instanceof Date
             && year === selectedDay.getFullYear()
             && month === selectedDay.getMonth()
             && day === selectedDay.getDate();
