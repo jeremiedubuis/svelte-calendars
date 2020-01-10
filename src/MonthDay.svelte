@@ -1,6 +1,6 @@
 <script>
     export let day;
-    export let selectedDay;
+    export let selectedDay = undefined;
     export let onSelect;
     export let year;
     export let month;

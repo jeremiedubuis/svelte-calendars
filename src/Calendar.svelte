@@ -9,7 +9,7 @@
     export let displayTitles = true;
     export let displayMonthPicker = true;
     export let displayMonthTitle = false;
-    export let selectedDay;
+    export let selectedDay = undefined;
     export let onSelect = () => {};
     export let dateClasses = [];
 

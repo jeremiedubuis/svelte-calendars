@@ -5,7 +5,7 @@
     export let month;
     export let displayTitles;
     export let displayMonthTitle;
-    export let selectedDay;
+    export let selectedDay = undefined;
     export let onSelect;
     export let dateClasses;
 
@@ -53,7 +53,7 @@
     {#each Array(numberOfDays + offset) as _, i}
         <li class={getDayClass(i-offset+1)}>
             {#if i>=offset}
-                <MonthDay day={i-offset+1} bind:selectedDay bind:month bind:year onSelect={onSelect} dateClasses={dateClasses}/>
+                <MonthDay day={i-offset+1} bind:selectedDay bind:month bind:year onSelect={onSelect}/>
             {/if}
         </li>
     {/each}

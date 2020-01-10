@@ -181,7 +181,7 @@ const setConfiguration = (o= {}) => {
 
 const MonthDay = create_ssr_component(($$result, $$props, $$bindings, $$slots) => {
 	let { day } = $$props;
-	let { selectedDay } = $$props;
+	let { selectedDay = undefined } = $$props;
 	let { onSelect } = $$props;
 	let { year } = $$props;
 	let { month } = $$props;
@@ -201,7 +201,7 @@ const MonthDay = create_ssr_component(($$result, $$props, $$bindings, $$slots) =
 
 const css = {
 	code: "ul.svelte-1f1rvgu{width:300px}li.svelte-1f1rvgu{display:inline-block;width:14.28%}",
-	map: "{\"version\":3,\"file\":\"Month.svelte\",\"sources\":[\"Month.svelte\"],\"sourcesContent\":[\"<script>\\n    import { daysTitles, firstDay , monthsTitles} from './helpers/configuration';\\n    import MonthDay from './MonthDay.svelte';\\n    export let year;\\n    export let month;\\n    export let displayTitles;\\n    export let displayMonthTitle;\\n    export let selectedDay;\\n    export let onSelect;\\n    export let dateClasses;\\n\\n    $: numberOfDays = new Date(month+1 > 11 ? year + 1 : year, month+1 > 11  ? month+1 : 0, 0).getDate()\\n    $: offset = new Date(year, month, 1).getDay()-firstDay;\\n\\n    const isDay = (date, day) =>\\n            date instanceof Date\\n            && year === date.getFullYear()\\n            && month === date.getMonth()\\n            && day === date.getDate();\\n\\n    $: getDayClass = (day) => {\\n        const c = [];\\n        if (selectedDay && isDay(selectedDay, day)) c.push('is-selected');\\n        const dateClass = dateClasses.find(([date]) => isDay(date, day));\\n        if (dateClass) c.push(dateClass[1]);\\n        return c.join(' ');\\n    };\\n\\n</script>\\n<style>\\n\\n    ul {\\n        width: 300px;\\n    }\\n\\n    li {\\n        display: inline-block;\\n        width: 14.28%;\\n    }\\n\\n</style>\\n{#if displayMonthTitle}\\n    {monthsTitles[month]}\\n{/if}\\n{#if displayTitles}\\n    <ul>\\n        {#each Array(7) as _, i}\\n            <li>{daysTitles[i]}</li>\\n        {/each}\\n    </ul>\\n{/if}\\n<ul>\\n    {#each Array(numberOfDays + offset) as _, i}\\n        <li class={getDayClass(i-offset+1)}>\\n            {#if i>=offset}\\n                <MonthDay day={i-offset+1} bind:selectedDay bind:month bind:year onSelect={onSelect} dateClasses={dateClasses}/>\\n            {/if}\\n        </li>\\n    {/each}\\n</ul>\\n\"],\"names\":[],\"mappings\":\"AA+BI,EAAE,eAAC,CAAC,AACA,KAAK,CAAE,KAAK,AAChB,CAAC,AAED,EAAE,eAAC,CAAC,AACA,OAAO,CAAE,YAAY,CACrB,KAAK,CAAE,MAAM,AACjB,CAAC\"}"
+	map: "{\"version\":3,\"file\":\"Month.svelte\",\"sources\":[\"Month.svelte\"],\"sourcesContent\":[\"<script>\\n    import { daysTitles, firstDay , monthsTitles} from './helpers/configuration';\\n    import MonthDay from './MonthDay.svelte';\\n    export let year;\\n    export let month;\\n    export let displayTitles;\\n    export let displayMonthTitle;\\n    export let selectedDay = undefined;\\n    export let onSelect;\\n    export let dateClasses;\\n\\n    $: numberOfDays = new Date(month+1 > 11 ? year + 1 : year, month+1 > 11  ? month+1 : 0, 0).getDate()\\n    $: offset = new Date(year, month, 1).getDay()-firstDay;\\n\\n    const isDay = (date, day) =>\\n            date instanceof Date\\n            && year === date.getFullYear()\\n            && month === date.getMonth()\\n            && day === date.getDate();\\n\\n    $: getDayClass = (day) => {\\n        const c = [];\\n        if (selectedDay && isDay(selectedDay, day)) c.push('is-selected');\\n        const dateClass = dateClasses.find(([date]) => isDay(date, day));\\n        if (dateClass) c.push(dateClass[1]);\\n        return c.join(' ');\\n    };\\n\\n</script>\\n<style>\\n\\n    ul {\\n        width: 300px;\\n    }\\n\\n    li {\\n        display: inline-block;\\n        width: 14.28%;\\n    }\\n\\n</style>\\n{#if displayMonthTitle}\\n    {monthsTitles[month]}\\n{/if}\\n{#if displayTitles}\\n    <ul>\\n        {#each Array(7) as _, i}\\n            <li>{daysTitles[i]}</li>\\n        {/each}\\n    </ul>\\n{/if}\\n<ul>\\n    {#each Array(numberOfDays + offset) as _, i}\\n        <li class={getDayClass(i-offset+1)}>\\n            {#if i>=offset}\\n                <MonthDay day={i-offset+1} bind:selectedDay bind:month bind:year onSelect={onSelect}/>\\n            {/if}\\n        </li>\\n    {/each}\\n</ul>\\n\"],\"names\":[],\"mappings\":\"AA+BI,EAAE,eAAC,CAAC,AACA,KAAK,CAAE,KAAK,AAChB,CAAC,AAED,EAAE,eAAC,CAAC,AACA,OAAO,CAAE,YAAY,CACrB,KAAK,CAAE,MAAM,AACjB,CAAC\"}"
 };
 
 const Month = create_ssr_component(($$result, $$props, $$bindings, $$slots) => {
@@ -209,7 +209,7 @@ const Month = create_ssr_component(($$result, $$props, $$bindings, $$slots) => {
 	let { month } = $$props;
 	let { displayTitles } = $$props;
 	let { displayMonthTitle } = $$props;
-	let { selectedDay } = $$props;
+	let { selectedDay = undefined } = $$props;
 	let { onSelect } = $$props;
 	let { dateClasses } = $$props;
 	const isDay = (date, day) => date instanceof Date && year === date.getFullYear() && month === date.getMonth() && day === date.getDate();
@@ -253,7 +253,6 @@ ${displayTitles
 				{
 					day: i - offset + 1,
 					onSelect,
-					dateClasses,
 					selectedDay,
 					month,
 					year
@@ -309,7 +308,7 @@ const Calendar = create_ssr_component(($$result, $$props, $$bindings, $$slots) =
 	let { displayTitles = true } = $$props;
 	let { displayMonthPicker = true } = $$props;
 	let { displayMonthTitle = false } = $$props;
-	let { selectedDay } = $$props;
+	let { selectedDay = undefined } = $$props;
 
 	let { onSelect = () => {
 		
