@@ -2,10 +2,11 @@
     import { onMount } from 'svelte';
     import Calendar from './Calendar.svelte';
     import { libClassName } from './helpers/configuration';
+    export let selectedDay;
     $: ({
         dateToValue = date => date.toLocaleDateString(),
         // calendar props
-        selectedDay,
+        selectedDay: _selectedDay,
         visibleMonths = 1,
         displayTitles = false,
         displayMonthPicker = true,
@@ -26,6 +27,7 @@
     const onDateSelection = (date, e) => {
         displayCalendar = false;
         value = dateToValue(date);
+        selectedDay = date;
         onSelect(date, e);
     };
 
