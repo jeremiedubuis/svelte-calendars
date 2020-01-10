@@ -21,16 +21,16 @@
     } = $$props);
 
 
-    let value;
+    $: value = selectedDay ? dateToValue(selectedDay) : undefined;
     let displayCalendar = false;
 
     const onFocus = () => displayCalendar = true;
     const close = () => displayCalendar = false;
-    const onDateSelection = (date, e) => {
+    const onDateSelection = (e, date, previousDate) => {
         displayCalendar = false;
         value = dateToValue(date);
         selectedDay = date;
-        onSelect(date, e);
+        onSelect(e, date, previousDate);
     };
 
     onMount(() => {

@@ -421,14 +421,13 @@ ${displayTitles
 
     const DatePicker = create_ssr_component(($$result, $$props, $$bindings, $$slots) => {
     	let { selectedDay } = $$props;
-    	let value;
     	let displayCalendar = false;
 
-    	const onDateSelection = (date, e) => {
+    	const onDateSelection = (e, date, previousDate) => {
     		displayCalendar = false;
     		value = dateToValue(date);
     		selectedDay = date;
-    		onSelect(date, e);
+    		onSelect(e, date, previousDate);
     	};
 
     	onMount(() => {
@@ -445,6 +444,8 @@ ${displayTitles
     		let { dateToValue = date => date.toLocaleDateString(), selectedDay: _selectedDay, visibleMonths = 1, displayTitles = false, displayMonthPicker = true, displayMonthTitle = false, displayYearPicker = false, month = new Date().getMonth(), year = new Date().getFullYear(), onSelect = () => {
     			
     		}, dateClasses = [], ...htmlProps } = $$props;
+
+    		let value = selectedDay ? dateToValue(selectedDay) : undefined;
 
     		$$rendered = `${displayCalendar
 		? `<div${add_attribute("class", `${libClassName}-date-picker`, 0)}>

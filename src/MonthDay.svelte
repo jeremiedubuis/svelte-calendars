@@ -6,8 +6,9 @@
     export let month;
 
     const select = (e,day) => {
+        const _previousDay = selectedDay ? new Date(selectedDay.getTime()) : null;
         selectedDay = new Date(year, month, day);
-        onSelect(selectedDay, e);
+        onSelect(e, selectedDay, _previousDay);
     };
 
 

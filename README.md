@@ -46,9 +46,10 @@ If true will display current year with previous and next buttons
 Preselected date (will change when user clicks on date)
 
 #### onSelect (function)
-Callback that will be called on selected date change with two parameters: 
-- the selected date object
+Callback that will be called on selected date change with three parameters: 
 - the original event
+- the selected date object
+- the previous selected date object
 
 #### dateClasses (array<array<Date,String>>)
 The dateClasses prop is an array of arrays that contain a Date and string, if the date in the calendar matches the provided date, the class will be applied
