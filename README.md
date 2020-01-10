@@ -47,6 +47,9 @@ Callback that will be called on selected date change with two parameters:
 - the selected date object
 - the original event
 
+#### dateClasses (array<array<Date,String>>)
+The dateClasses prop is an array of arrays that contain a Date and string, if the date in the calendar matches the provided date, the class will be applied
+
 ## DatePicker
 ```svelte
 <script>

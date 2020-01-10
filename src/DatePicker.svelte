@@ -14,6 +14,7 @@
         month = new Date().getMonth(),
         year= new Date().getFullYear(),
         onSelect = () => {},
+        dateClasses = [],
         // html props to spread on input
         ...htmlProps
     } = $$props);
@@ -48,6 +49,7 @@
                 month={month}
                 year={year}
                 onSelect={onDateSelection}
+                dateClasses={dateClasses}
         />
     </div>
 {/if}

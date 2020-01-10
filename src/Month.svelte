@@ -7,9 +7,24 @@
     export let displayMonthTitle;
     export let selectedDay;
     export let onSelect;
+    export let dateClasses;
 
     $: numberOfDays = new Date(month+1 > 11 ? year + 1 : year, month+1 > 11  ? month+1 : 0, 0).getDate()
     $: offset = new Date(year, month, 1).getDay()-firstDay;
+
+    const isDay = (date, day) =>
+            date instanceof Date
+            && year === date.getFullYear()
+            && month === date.getMonth()
+            && day === date.getDate();
+
+    $: getDayClass = (day) => {
+        const c = [];
+        if (selectedDay && isDay(selectedDay, day)) c.push('is-selected');
+        const dateClass = dateClasses.find(([date]) => isDay(date, day));
+        if (dateClass) c.push(dateClass[1]);
+        return c.join(' ');
+    };
 
 </script>
 <style>
@@ -36,9 +51,9 @@
 {/if}
 <ul>
     {#each Array(numberOfDays + offset) as _, i}
-        <li>
+        <li class={getDayClass(i-offset+1)}>
             {#if i>=offset}
-                <MonthDay day={i-offset+1} bind:selectedDay bind:month bind:year onSelect={onSelect} />
+                <MonthDay day={i-offset+1} bind:selectedDay bind:month bind:year onSelect={onSelect} dateClasses={dateClasses}/>
             {/if}
         </li>
     {/each}

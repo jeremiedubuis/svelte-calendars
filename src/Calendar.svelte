@@ -11,6 +11,7 @@
     export let displayMonthTitle = false;
     export let selectedDay;
     export let onSelect = () => {};
+    export let dateClasses = [];
 
 </script>
 <style>
@@ -28,6 +29,7 @@
                 onSelect={onSelect}
                 year={month + i > 11 ? year+1 : year}
                 month={month+i > 11 ? month+i-11 : month+i}
+                dateClasses={dateClasses}
                 displayTitles={displayTitles}
                 displayMonthTitle={displayMonthTitle} />
         </li>
