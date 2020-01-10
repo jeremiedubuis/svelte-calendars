@@ -1,6 +1,6 @@
 {
   "name": "svelte-calendars",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "author": "Jérémie Dubuis",
   "svelte": "src/index.js",
   "module": "index.mjs",
