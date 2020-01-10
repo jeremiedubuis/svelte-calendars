@@ -193,7 +193,7 @@ const MonthDay = create_ssr_component(($$result, $$props, $$bindings, $$slots) =
 	if ($$props.year === void 0 && $$bindings.year && year !== void 0) $$bindings.year(year);
 	if ($$props.month === void 0 && $$bindings.month && month !== void 0) $$bindings.month(month);
 
-	return `<button${add_classes([isSelected(selectedDay) ? "is-selected" : ""].join(" ").trim())}>
+	return `<button type="${"button"}"${add_classes([isSelected(selectedDay) ? "is-selected" : ""].join(" ").trim())}>
     ${escape(day)}
 </button>`;
 });
@@ -280,11 +280,11 @@ const MonthPicker = create_ssr_component(($$result, $$props, $$bindings, $$slots
 	if ($$props.year === void 0 && $$bindings.year && year !== void 0) $$bindings.year(year);
 	if ($$props.month === void 0 && $$bindings.month && month !== void 0) $$bindings.month(month);
 
-	return `<button>
+	return `<button class="${"previous-button"}" type="${"button"}">
     Previous
 </button>
 ${escape(monthsTitles[month])}
-<button>
+<button class="${"next-button"}" type="${"button"}">
     Next
 </button>`;
 });
@@ -336,7 +336,9 @@ const Calendar = create_ssr_component(($$result, $$props, $$bindings, $$slots) =
 				{}
 			)}`
 		: ``}
-    ${each(Array(visibleMonths), (_, i) => `${validate_component(Month, "Month").$$render(
+    <ul class="${escape(libClassName) + "-months"}">
+    ${each(Array(visibleMonths), (_, i) => `<li class="${escape(libClassName) + "-month"}">
+            ${validate_component(Month, "Month").$$render(
 			$$result,
 			{
 				onSelect,
@@ -353,7 +355,9 @@ const Calendar = create_ssr_component(($$result, $$props, $$bindings, $$slots) =
 				}
 			},
 			{}
-		)}`)}
+		)}
+        </li>`)}
+    </ul>
 </div>`;
 	} while (!$$settled);
 

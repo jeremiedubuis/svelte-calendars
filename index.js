@@ -199,7 +199,7 @@
     	if ($$props.year === void 0 && $$bindings.year && year !== void 0) $$bindings.year(year);
     	if ($$props.month === void 0 && $$bindings.month && month !== void 0) $$bindings.month(month);
 
-    	return `<button${add_classes([isSelected(selectedDay) ? "is-selected" : ""].join(" ").trim())}>
+    	return `<button type="${"button"}"${add_classes([isSelected(selectedDay) ? "is-selected" : ""].join(" ").trim())}>
     ${escape(day)}
 </button>`;
     });
@@ -286,11 +286,11 @@ ${displayTitles
     	if ($$props.year === void 0 && $$bindings.year && year !== void 0) $$bindings.year(year);
     	if ($$props.month === void 0 && $$bindings.month && month !== void 0) $$bindings.month(month);
 
-    	return `<button>
+    	return `<button class="${"previous-button"}" type="${"button"}">
     Previous
 </button>
 ${escape(monthsTitles[month])}
-<button>
+<button class="${"next-button"}" type="${"button"}">
     Next
 </button>`;
     });
@@ -342,7 +342,9 @@ ${escape(monthsTitles[month])}
 				{}
 			)}`
 		: ``}
-    ${each(Array(visibleMonths), (_, i) => `${validate_component(Month, "Month").$$render(
+    <ul class="${escape(libClassName) + "-months"}">
+    ${each(Array(visibleMonths), (_, i) => `<li class="${escape(libClassName) + "-month"}">
+            ${validate_component(Month, "Month").$$render(
 			$$result,
 			{
 				onSelect,
@@ -359,7 +361,9 @@ ${escape(monthsTitles[month])}
 				}
 			},
 			{}
-		)}`)}
+		)}
+        </li>`)}
+    </ul>
 </div>`;
     	} while (!$$settled);
 

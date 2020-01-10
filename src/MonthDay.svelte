@@ -18,7 +18,7 @@
 
 </script>
 
-<button class:is-selected={isSelected(selectedDay)}
+<button type="button" class:is-selected={isSelected(selectedDay)}
         on:click={(e) => select(e,day)}>
     {day}
 </button>

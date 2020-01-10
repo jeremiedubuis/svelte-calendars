@@ -20,13 +20,17 @@
     {#if displayMonthPicker}
         <MonthPicker bind:month bind:year />
     {/if}
+    <ul class="{libClassName}-months">
     {#each Array(visibleMonths) as _, i}
-        <Month
+        <li class="{libClassName}-month">
+            <Month
                 bind:selectedDay
                 onSelect={onSelect}
                 year={month + i > 11 ? year+1 : year}
                 month={month+i > 11 ? month+i-11 : month+i}
-                        displayTitles={displayTitles}
-                        displayMonthTitle={displayMonthTitle} />
+                displayTitles={displayTitles}
+                displayMonthTitle={displayMonthTitle} />
+        </li>
     {/each}
+    </ul>
 </div>

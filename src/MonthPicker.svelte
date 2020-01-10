@@ -19,10 +19,10 @@
     };
 </script>
 
-<button on:click={clickPrevious}>
+<button class="previous-button" type="button" on:click={clickPrevious}>
     Previous
 </button>
 { monthsTitles[month] }
-<button on:click={clickNext}>
+<button class="next-button" type="button" on:click={clickNext}>
     Next
 </button>
