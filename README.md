@@ -39,6 +39,9 @@ If true will display current month with previous and next buttons
 #### displayMonthTitle (bool)
 Will display the month name over each visible month in calendar
 
+#### displayYearPicker (bool)
+If true will display current year with previous and next buttons
+
 #### selectedDay (Date)
 Preselected date (will change when user clicks on date)
 

@@ -18,11 +18,12 @@
         }
     };
 </script>
-
-<button class="previous-button" type="button" on:click={clickPrevious}>
-    Previous
-</button>
-{ monthsTitles[month] }
-<button class="next-button" type="button" on:click={clickNext}>
-    Next
-</button>
+<div class="month-picker">
+    <button class="previous-button" type="button" on:click={clickPrevious}>
+        Previous
+    </button>
+    { monthsTitles[month] }
+    <button class="next-button" type="button" on:click={clickNext}>
+        Next
+    </button>
+</div>

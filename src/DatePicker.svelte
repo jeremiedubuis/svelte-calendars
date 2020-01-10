@@ -11,6 +11,7 @@
         displayTitles = false,
         displayMonthPicker = true,
         displayMonthTitle = false,
+        displayYearPicker = false,
         month = new Date().getMonth(),
         year= new Date().getFullYear(),
         onSelect = () => {},
@@ -46,6 +47,7 @@
                 bind:visibleMonths
                 bind:displayTitles
                 bind:displayMonthPicker
+                bind:displayYearPicker
                 month={month}
                 year={year}
                 onSelect={onDateSelection}
